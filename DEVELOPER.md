@@ -2,7 +2,7 @@
 
 To build Qwik for local development, first [npm](https://docs.npmjs.com/) (or [yarn](https://yarnpkg.com/)) install the dev dependencies:
 
-```
+```shell
 npm install
 ```
 
@@ -13,7 +13,7 @@ Next the `start` command will:
 - Run the type checking watch process with [tsc](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
 - Run the unit test (Jest) watch process
 
-```
+```shell
 npm start
 ```
 
@@ -23,11 +23,11 @@ The `integration/` directory is for this local repo's end-to-end and integration
 
 First start the integration dev server, which will also ensure a build was completed:
 
-```
+```shell
 npm run integration.server
 ```
 
-Then navigate to http://localhost:8080/
+Then navigate to <http://localhost:8080/>
 
 The `npm run integration.server` commands runs the server in `development` mode, where files are not minified, source maps are inlined, and there's additional logging. To run code minified with external source maps and without extra logs, run `npm run integration.server.prod`, which is what the end-to-end tests use.
 
@@ -35,7 +35,7 @@ The `npm run integration.server` commands runs the server in `development` mode,
 
 To run all Unit tests ([Jest](https://jestjs.io/)) and E2E/Integration tests ([Cypress](https://www.cypress.io/)), run:
 
-```
+```shell
 npm test
 ```
 
@@ -45,13 +45,13 @@ The `test` command will also ensure a build was completed.
 
 Unit tests use [Jest](https://jestjs.io/).
 
-```
+```shell
 npm run test.unit
 ```
 
 To keep Jest open with the watch mode, run:
 
-```
+```shell
 npm run test.watch
 ```
 
@@ -65,13 +65,13 @@ E2E and Integration tests use [Cypress](https://www.cypress.io/).
 
 To run the Cypress tests headless, from start to finish, run:
 
-```
+```shell
 npm run test.e2e
 ```
 
 To open Cypress in interactive mode and control through a browser, run:
 
-```
+```shell
 npm run test.e2e.open
 ```
 
@@ -87,7 +87,7 @@ A full production build will:
 - Builds a minified `core.min.mjs` file
 - Generates the publishing `package.json`
 
-```
+```shell
 npm run build
 ```
 
@@ -98,11 +98,11 @@ to [@builder.io/qwik](https://www.npmjs.com/package/@builder.io/qwik).
 
 Qwik's JSX implementation is based off of React's `@types/react`. However, React's JSX is declared as a `global` and adds its own events such as `onClick`. To avoid the global and allow Qwik to scope its own implementation of JSX, there's a generate script that gets the latest `@types/react/index.d.ts`, and parses the JSX type information.
 
-```
+```shell
 yarn jsx.types
 ```
 
-1. Downloads the React types from https://unpkg.com/@types/react/index.d.ts
+1. Downloads the React types from <https://unpkg.com/@types/react/index.d.ts>
    and follows the redirect to get the latest version. It uses a download
    instead of an npm install because we want to ensure our local build is not
    polluted by React's global JSX, which may not show errors locally, but would
@@ -127,15 +127,15 @@ Bazel is currently used for further testing and builds between internal repos. H
 
 Best way to run `bazel` is with [`bazelisk`](https://github.com/bazelbuild/bazelisk) which will automatically download and execute the right version of `bazel`.
 
-_preferred way_
+#### Preferred way
 
-```
+```shell
 brew install bazelisk
 ```
 
 or
 
-```
+```shell
 npm install -g @bazel/bazelisk
 ```
 
@@ -149,7 +149,7 @@ The difference between `bazel` and `ibazel` is that `ibazel` will re-invoke `baz
 
 The project has pre-submit hooks, which ensure that your code is correctly formatted. You can run them manually like so:
 
-```
+```shell
 npm run lint
 npm run buildifier-check
 npm run prettier-check
@@ -157,7 +157,7 @@ npm run prettier-check
 
 Some of the issues can be fixed automatically by using:
 
-```
+```shell
 npm run buildifier-fix
 npm run prettier-fix
 ```
